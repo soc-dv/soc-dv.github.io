@@ -5,85 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOC-DV - Groups and Expert Panel</title>
     <style>
-        /* Page background styling */
-        body {
-            background-color: #f0f4f8; /* Professional light background */
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Header and title styling */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: #2c3e50; /* Dark professional header */
-        }
-
-        .title h1 {
-            font-family: 'Trebuchet MS', sans-serif;
-            font-size: 36px;
-            font-weight: bold;
-            color: #ecf0f1;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Adding a shadow effect to the title */
-            margin: 0;
-            letter-spacing: 1px;
-        }
-
-        .tabs {
-            display: flex;
-        }
-
-        .tabs button {
-            background-color: #34495e;
-            color: #ecf0f1;
-            border: none;
-            padding: 10px 20px;
-            margin-left: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        .tabs button:hover {
-            background-color: #2c3e50;
-        }
-
-        .active {
-            background-color: #007BFF !important;
-        }
-
-        .content-section {
-            padding: 40px 20px;
-            background-color: #fff;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .content-section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .content-section p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        /* Footer styling */
-        footer {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
+        /* Your existing styles */
+        /* ... (existing CSS here) ... */
     </style>
 </head>
 <body>
@@ -94,25 +17,36 @@
             <h1>SOC-DV</h1>
         </div>
         <div class="tabs">
-            <button class="tablinks" onclick="openTab('introduction.html', this)">Introduction</button>
-            <button class="tablinks" onclick="openTab('projects.html', this)">Projects</button>
-            <button class="tablinks" onclick="openTab('publications.html', this)">Publications</button>
-            <button class="tablinks" onclick="openTab('members.html', this)">Members</button>
+            <button class="tablinks" onclick="openTab(event, 'Introduction')">Introduction</button>
+            <button class="tablinks" onclick="openTab(event, 'Projects')">Projects</button>
+            <button class="tablinks" onclick="openTab(event, 'Publications')">Publications</button>
+            <button class="tablinks" onclick="openTab(event, 'Members')">Members</button>
         </div>
     </div>
 
-    <!-- Content Section -->
-    <div id="content" class="content-section">
-        <p>Select a tab to view content.</p>
+    <!-- Tab content -->
+    <div id="Introduction" class="tabcontent">
+        <h2>Introduction</h2>
+        <p>This is the introduction content.</p>
     </div>
 
-    <!-- Expert Panel Section -->
-    <div class="expert-panel">
-        <h3>Expert Panel</h3>
-        <div class="expert">Dr. Anees Ullah - Specialist in Digital Systems</div>
-        <div class="expert">Engnr. Memoomna Gul - Expert in FPGA Design</div>
-        <div class="expert">Dr. Ali Zahid - Authority on RISC-V Architectures</div>
+    <div id="Projects" class="tabcontent">
+        <h2>Projects</h2>
+        <p>This is the projects content.</p>
     </div>
+
+    <div id="Publications" class="tabcontent">
+        <h2>Publications</h2>
+        <p>This is the publications content.</p>
+    </div>
+
+    <div id="Members" class="tabcontent">
+        <h2>Members</h2>
+        <p>This is the members content.</p>
+    </div>
+
+    <!-- Your existing Group Section and Expert Panel Section -->
+    <!-- ... (existing content here) ... -->
 
     <!-- Footer -->
     <footer>
@@ -120,23 +54,24 @@
     </footer>
 
     <script>
-        function openTab(url, button) {
-            // Highlight the active tab
-            var tabs = document.getElementsByClassName("tablinks");
-            for (var i = 0; i < tabs.length; i++) {
-                tabs[i].className = tabs[i].className.replace(" active", "");
+        // Updated JavaScript code
+        function openTab(evt, tabName) {
+            // Get all elements with class="tabcontent" and hide them
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
             }
-            button.className += " active";
-
-            // Fetch and display content
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('content').innerHTML = data;
-                })
-                .catch(error => {
-                    document.getElementById('content').innerHTML = '<p>Failed to load content.</p>';
-                });
+            
+            // Remove the "active" class from all buttons
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            // Show the clicked tab's content and add "active" class to the clicked button
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
         }
     </script>
 </body>
