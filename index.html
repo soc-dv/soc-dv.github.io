@@ -69,6 +69,9 @@
             justify-content: center;
             margin: 20px 0;
             flex-wrap: wrap; /* Allows the items to wrap if screen is smaller */
+            width: 100%; /* Ensures full width below tabs */
+            padding: 20px 0; /* Add padding for space below tabs */
+            box-sizing: border-box;
         }
 
         .group {
@@ -175,6 +178,16 @@
                 width: 80%;
             }
         }
+
+        /* Ensure group is placed directly below tabs */
+        .tabs + .group-container {
+            margin-top: 0; /* Remove extra space between tabs and group */
+        }
+
+        /* Fix any layout shifts in larger screens */
+        .content-area {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -241,20 +254,19 @@
 
     <div id="Projects" class="tabcontent">
         <h2>Projects</h2>
-        <p>Details about projects will go here.</p>
-        <a href="/projects/">Go to Projects</a>
+        <p>Welcome to the Projects page.</p>
+        <a href="/projects/">View Projects</a>
     </div>
 
     <div id="Publications" class="tabcontent">
         <h2>Publications</h2>
-        <p>Details about publications will go here.</p>
-        <a href="/publications/">Go to Publications</a>
+        <p>Welcome to the Publications page.</p>
+        <a href="/publications/">View Publications</a>
     </div>
 
     <div id="Members" class="tabcontent">
         <h2>Members</h2>
-        <p>Details about team members will go here.</p>
-        <a href="/members/">Go to Members</a>
+        <p>Meet our team members.</p>
     </div>
 
     <!-- Expert Panel Section -->
