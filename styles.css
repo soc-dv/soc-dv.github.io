@@ -73,31 +73,6 @@ header nav ul li a:hover {
     border-radius: 5px;
 }
 
-.publications {
-    margin: 20px;
-}
-
-h1 {
-    color: #333;
-}
-
-ol {
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 10px;
-}
-
-a {
-    color: #0066cc;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
 .cta-button:hover {
     background-color: #d4951e;
     color: white;
