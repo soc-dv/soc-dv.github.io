@@ -10,60 +10,6 @@
 <!-- Load Google's JavaScript API Client Library -->
 <script src="https://apis.google.com/js/api.js"></script>
 
-<script>
-  var CLIENT_ID = '584933671962-ln25c6ecjvnuldkst8hbg0s15rkv7cj0.apps.googleusercontent.com';
-  var API_KEY = 'AIzaSyCMyhz7g6J3UsS4Lib_hkfCRPZ-7Z9cb6Q';
-  var DISCOVERY_DOCS = ["https://analyticsreporting.googleapis.com/$discovery/rest?version=v4"];
-  var SCOPES = "https://www.googleapis.com/auth/analytics.readonly";
-
-  function handleClientLoad() {
-    gapi.load('client', initClient);
-  }
-
-  function initClient() {
-    gapi.client.init({
-      apiKey: API_KEY,
-      discoveryDocs: DISCOVERY_DOCS
-    }).then(function () {
-      console.log("Google API Client initialized.");
-      initializeGis();
-    }, function(error) {
-      console.error('Error initializing Google API client: ', error);
-      document.getElementById('auth-status').innerText = 'Error initializing client: ' + error.details;
-    });
-  }
-
-  function initializeGis() {
-    google.accounts.oauth2.initTokenClient({
-      client_id: CLIENT_ID,
-      scope: SCOPES,
-      callback: (tokenResponse) => {
-        console.log("OAuth token received: ", tokenResponse);
-        document.getElementById('auth-status').innerText = 'Signed in successfully!';
-        getRealtimeData();
-      }
-    }).requestAccessToken();
-  }
-
-  function getRealtimeData() {
-    gapi.client.request({
-      'path': 'https://analytics.googleapis.com/v3/data/realtime',
-      'method': 'GET',
-      'params': {
-        'ids': 'ga:330954867',
-        'metrics': 'rt:activeUsers'
-      }
-    }).then(function(response) {
-      console.log('Real-time data fetched:', response);
-      var activeUsers = response.result.totalsForAllResults['rt:activeUsers'];
-      document.getElementById('active-users').innerText = activeUsers || '0';
-    }, function(error) {
-      console.error('Error fetching real-time data: ', error);
-      document.getElementById('active-users').innerText = 'Error loading data.';
-    });
-  }
-</script>
-
 
 
 
@@ -804,16 +750,7 @@
     </section><!-- #team -->
 
 
-    <h2>Google Analytics Real-Time Data</h2>
-  <p id="auth-status">Loading...</p>
-
-  <!-- Display the real-time active users here -->
-  <p>Active Users Right Now: <span id="active-users">Loading...</span></p>
-
-  <!-- Trigger the OAuth flow on page load -->
-  <script>
-    handleClientLoad();
-  </script>
+    
 
 
 
