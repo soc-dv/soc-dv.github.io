@@ -12,6 +12,61 @@
 
   gtag('config', 'G-85RZ79EE5T');
 </script>
+<script src="https://apis.google.com/js/api.js"></script>
+
+  <script>
+    // Your client configuration and OAuth logic goes here
+    var CLIENT_ID = '584933671962-ln25c6ecjvnuldkst8hbg0s15rkv7cj0.apps.googleusercontent.com';
+    var API_KEY = 'AIzaSyCMyhz7g6J3UsS4Lib_hkfCRPZ-7Z9cb6Q';
+    var DISCOVERY_DOCS = ["https://analyticsreporting.googleapis.com/$discovery/rest?version=v4"];
+    var SCOPES = "https://www.googleapis.com/auth/analytics.readonly";
+
+    function handleClientLoad() {
+      gapi.load('client:auth2', initClient);
+    }
+
+    function initClient() {
+      gapi.client.init({
+        apiKey: API_KEY,
+        clientId: CLIENT_ID,
+        discoveryDocs: DISCOVERY_DOCS,
+        scope: SCOPES
+      }).then(function () {
+        var authInstance = gapi.auth2.getAuthInstance();
+        authInstance.isSignedIn.listen(updateSigninStatus);
+        updateSigninStatus(authInstance.isSignedIn.get());
+        document.getElementById('login-button').addEventListener('click', function() {
+          authInstance.signIn();
+        });
+      }, function(error) {
+        console.log('Error initializing Google API client: ', error);
+      });
+    }
+
+    function updateSigninStatus(isSignedIn) {
+      if (isSignedIn) {
+        getRealtimeData();
+      } else {
+        document.getElementById('auth-status').innerText = 'You are not signed in';
+      }
+    }
+
+    function getRealtimeData() {
+      gapi.client.request({
+        'path': '/v3/data/realtime',
+        'method': 'GET',
+        'params': {
+          'ids': 'ga:330954867',
+          'metrics': 'rt:activeUsers'
+        }
+      }).then(function(response) {
+        var activeUsers = response.result.totalsForAllResults['rt:activeUsers'];
+        document.getElementById('active-users').innerText = activeUsers;
+      }, function(error) {
+        console.log('Error fetching real-time data: ', error);
+      });
+    }
+  </script>
 
 
 
@@ -19,6 +74,10 @@
 
   <meta charset="utf-8">
   <title>SoC-DV</title>
+
+ <!-- Position 1: Load Google's JavaScript API client library here in the head section -->
+  <script src="https://apis.google.com/js/api.js"></script>
+
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -744,6 +803,23 @@
 
       </div>
     </section><!-- #team -->
+
+
+    <h2>Google Analytics Real-Time Data</h2>
+    <p id="auth-status">Loading...</p>
+  
+    <!-- Button for user to log in -->
+    <button id="login-button">Sign In to View Data</button>
+  
+    <!-- Display the real-time active users here -->
+    <p>Active Users Right Now: <span id="active-users">Loading...</span></p>
+  
+    <!-- Trigger the OAuth flow on page load -->
+    <script>
+      handleClientLoad();
+    </script>
+
+
 
     <!--==========================
       Contact Section
