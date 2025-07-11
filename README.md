@@ -14,4 +14,4 @@ Some of our ongoing projects include:
 3. Custom Peripheral Integration in Chipyard
 
 ## Contact Us
-For more information, please reach out via aneesullah@uetpeshawar.edu.pk.
+For more information, please reach out via socdv.uetatd@gmail.com
