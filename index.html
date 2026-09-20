@@ -535,34 +535,40 @@
     </section><!-- #team -->
 
 
-    <!-- TRAININGS CONDUCTED SECTION -->
-<section id="trainings" class="py-16 bg-gray-50">
+<!-- TRAININGS CONDUCTED SECTION -->
+<section id="trainings" class="py-16 bg-gray-50 flex flex-col items-center text-center">
     <!-- Section Heading -->
-    <div class="text-center mb-12">
-            <div class="section-header wow fadeInUp">
-              <br><br><br>
-              <h3 id="unique-heading">Trainings Conducted</h3>
-            </div>
+    <div class="mb-12">
+        <div class="section-header wow fadeInUp">
+          <br><br><br>
+          <h3 id="unique-heading">Trainings Conducted</h3>
+        </div>
     </div>
 
-
-    <!-- Images & Details Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <img 
-          src="img/Training-1a.png" 
-          alt="Open Source IC Design Tools Workshop" 
-        />
-        <img 
-          src="img/Training-1b.png" 
-          alt="Open Source IC Design Tools Workshop" 
-        />
-        <div class="p-6">
+    <!-- Details & Images Container -->
+    <div class="max-w-5xl mx-auto flex flex-col items-center gap-8">
+        <!-- Details Paragraph -->
+        <div class="p-6 max-w-2xl text-center">
           <h3 class="text-xl font-semibold text-gray-800 mb-2">Hands-on ASIC Implementation with OpenLane</h3>
           <p class="text-gray-600 text-sm leading-relaxed">
            Interactive practical sessions guiding participants through setting up OpenLane configurations, executing complete ASIC design runs, performing static timing analysis (STA), and resolving design rule checks (DRC) for silicon fabrication readiness.
           </p>
         </div>
-      </div>
+
+        <!-- Horizontally Adjacent Images -->
+        <div class="flex flex-row justify-center items-center gap-6 flex-wrap">
+          <img 
+            src="img/Training-1a.png" 
+            alt="Open Source IC Design Tools Workshop" 
+            class="max-w-xs h-auto"
+          />
+          <img 
+            src="img/Training-1b.png" 
+            alt="Open Source IC Design Tools Workshop" 
+            class="max-w-xs h-auto"
+          />
+        </div>
+    </div>
 </section>
 
     <!--==========================
