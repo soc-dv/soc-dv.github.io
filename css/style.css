@@ -1591,3 +1591,42 @@ body.mobile-nav-active #mobile-nav-toggle {
 #unique-heading {
   font-size: 25px;
 }
+
+
+/* Google Scholar dropdown only */
+.footer-links .google-scholar-dropdown .scholar-menu {
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 3px;
+    padding: 0;
+    min-width: 190px;
+    box-shadow: none;
+}
+
+.footer-links .google-scholar-dropdown .scholar-menu li a {
+    background-color: #111;
+    color: #fff;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    padding: 10px 15px;
+    border-bottom: 1px solid #333;
+    white-space: nowrap;
+}
+
+.footer-links .google-scholar-dropdown .scholar-menu li:last-child a {
+    border-bottom: none;
+}
+
+.footer-links .google-scholar-dropdown .scholar-menu li a:hover,
+.footer-links .google-scholar-dropdown .scholar-menu li a:focus {
+    background-color: #222;
+    color: #18d26e;
+    text-decoration: none;
+}
+
+
+.footer-links .google-scholar-dropdown > a {
+    color: #fff;
+}
